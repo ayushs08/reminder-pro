@@ -1,0 +1,25 @@
+.Sheet {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    transform: translateY(-20%);
+}
+.sheet-title {
+    position: absolute;
+    bottom: 100%;
+    transform: translateY(30%);
+    text-align: center;
+    margin: 0;
+    text-shadow: 3px 3px silver;
+}
+.paper {
+    padding: 2rem;
+    position: relative;
+}
+.add-btn {
+    position: absolute !important;
+    top: 100%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+}

@@ -1,5 +1,10 @@
-body {
+body, html, #root, .App {
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat';
+  background: linear-gradient(to top, transparent, #edf2fa);
+}
+* {
+  box-sizing: border-box
 }

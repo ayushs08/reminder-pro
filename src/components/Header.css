@@ -1,0 +1,13 @@
+.Header {
+    height: 30%;
+    padding: 1rem;
+    position: relative;
+}
+.logo {
+    display: block;
+    width: 10vmax;
+    max-width: 80px;
+    max-height: 80px;
+    height: 10vmax;
+    margin: auto;
+}
