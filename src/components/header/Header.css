@@ -1,7 +1,5 @@
 .Header {
-    height: 30%;
-    padding: 1rem;
-    position: relative;
+    padding: 2rem 0;
 }
 .logo {
     display: block;
@@ -9,5 +7,5 @@
     max-width: 80px;
     max-height: 80px;
     height: 10vmax;
-    margin: auto;
+    margin: 0 auto 4rem auto;
 }

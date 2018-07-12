@@ -7,7 +7,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 import './Sheet.css'
 
-const ReminderForm = () => {
+const ReminderForm = ({ handleChange }) => {
     return (
         <form>
             <TextField 
@@ -15,6 +15,7 @@ const ReminderForm = () => {
                 label="I need to..."
                 fullWidth
                 margin="normal"
+                onChange={(event) => console.log()}
             />
             <Button variant="fab" color="secondary" aria-label="add" className="add-btn">
                 <AddIcon />
@@ -23,7 +24,7 @@ const ReminderForm = () => {
     )
 }
 
-const Sheet = () => {
+const Sheet = ({ handleChange }) => {
 
     return (
         <div className="Sheet">
@@ -31,7 +32,7 @@ const Sheet = () => {
                 <Grid item xs={10} md={6}>
                     <Paper className="paper">
                         <h1 className="sheet-title">Reminder Pro</h1>
-                        <ReminderForm />
+                        <ReminderForm handleChange={handleChange}/>
                     </Paper>
                 </Grid>
             </Grid>

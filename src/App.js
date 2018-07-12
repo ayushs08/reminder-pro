@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import Header from './components/Header'
+import Header from './components/header/Header'
+import ReminderList from './components/reminderList/ReminderList'
 
 const theme = createMuiTheme({
     palette: {
@@ -21,11 +22,23 @@ const theme = createMuiTheme({
 });
 
 class App extends Component {
+
+    state = {
+        reminder: ''
+    }
+
+    handleChange = this.handleChange.bind(this)
+
+    handleChange(reminder) {
+        this.setState({reminder})
+    }
+
     render() {
         return (
             <div className="App">
                 <MuiThemeProvider theme={theme}>
-                    <Header />
+                    <Header handleChange={this.handleChange}/>
+                    <ReminderList />
                 </MuiThemeProvider>
             </div>
         );

@@ -1,0 +1,22 @@
+.ReminderList {
+    padding: 1rem 0;
+}
+.reminders {
+    padding: 2rem;
+    margin: 0 auto;
+    position: relative;
+}
+.clear-all {
+    position: fixed;
+    bottom: 4rem;
+    right: 4rem;
+}
+.list-item {
+    margin: 1rem;
+    padding: 1rem 1rem 1rem 2rem;
+    display: flex;
+    align-items: center;
+}
+.action {
+    margin-left: 2rem;
+}
