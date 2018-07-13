@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { deleteReminder } from '../../Actions'
 import './ReminderList.css'
 
-const Reminder = ({ reminderText }) => {
+const Reminder = ({ reminderText, handleDoneReminder, id }) => {
     return (
         <Grid item>
             <Paper className="list-item">
@@ -25,7 +25,7 @@ const Reminder = ({ reminderText }) => {
                     </Tooltip>
                     <Tooltip title="Done">
                         <IconButton >
-                            <DoneIcon onClick={() => deleteReminder(8)}/>
+                            <DoneIcon onClick={() => handleDoneReminder(id)}/>
                         </IconButton>
                     </Tooltip>
                 </div>
@@ -34,9 +34,13 @@ const Reminder = ({ reminderText }) => {
     )
 }
 
-const ReminderList = ({ reminders }) => {
+const ReminderList = ({ reminders, ...props }) => {
 
-    const renderReminder = reminders.map( reminder => <Reminder reminderText={reminder.text} key={reminder.id}/> );
+    const handleDoneReminder = (id) => {
+        props.deleteReminder(id)
+    }
+
+    const renderReminder = reminders.map( reminder => <Reminder reminderText={reminder.text} key={reminder.id} id={reminder.id} handleDoneReminder={handleDoneReminder}/> );
 
     return (
         <div className="ReminderList">
@@ -55,9 +59,7 @@ const ReminderList = ({ reminders }) => {
 }
 
 function mapStateToProps(state) {
-    return {
-        reminders: state
-    }
+    return {reminders: state}
 }
 
 export default connect(mapStateToProps, { deleteReminder })(ReminderList);
