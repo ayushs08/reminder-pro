@@ -1,9 +1,9 @@
 import { ADD_REMINDER, DELETE_REMINDER } from './Constants'
 
-export const addReminder = (reminderText) => {
+export const addReminder = (text) => {
     const action = {
         type: ADD_REMINDER,
-        reminderText
+        text
     }
     console.log('action in addReminder', action);
     return action;

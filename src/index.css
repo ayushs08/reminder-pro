@@ -1,11 +1,22 @@
 body, html, #root, .App {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat';
-  background: linear-gradient(to top right, #eee, #e2fdfa);
-  background-repeat: no-repeat;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
 }
+.App:before {
+    display: block;
+    content: '';
+    position: fixed;
+    z-index: -10;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top right, #fff,#e2fdfa);
+}
+
+
 * {
-  box-sizing: border-box
+    box-sizing: border-box
 }
