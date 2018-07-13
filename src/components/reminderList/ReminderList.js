@@ -7,10 +7,37 @@ import DoneAllIcon from '@material-ui/icons/DoneAll';
 import DoneIcon from '@material-ui/icons/Done';
 import EditIcon from '@material-ui/icons/Edit';
 import Tooltip from '@material-ui/core/Tooltip';
+import { connect } from 'react-redux';
 
+import { deleteReminder } from '../../Actions'
 import './ReminderList.css'
 
-const ReminderList = () => {
+const Reminder = ({ reminderText }) => {
+    return (
+        <Grid item>
+            <Paper className="list-item">
+                <div className="the-remidner">{reminderText}</div>
+                <div className="reminder-action">
+                    <Tooltip title="Edit">
+                        <IconButton>
+                            <EditIcon />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Done">
+                        <IconButton >
+                            <DoneIcon onClick={() => deleteReminder(8)}/>
+                        </IconButton>
+                    </Tooltip>
+                </div>
+            </Paper>
+        </Grid>
+    )
+}
+
+const ReminderList = ({ reminders }) => {
+
+    const renderReminder = reminders.map( reminder => <Reminder reminderText={reminder.text} key={reminder.id}/> );
+
     return (
         <div className="ReminderList">
             <Grid container direction="row" justify="center" className="reminder-container"> 
@@ -21,25 +48,16 @@ const ReminderList = () => {
                     </Button>
                 </Tooltip>
                 </div>
-                <Grid item>
-                    <Paper className="list-item">
-                        <div className="the-remidner">Check</div>
-                        <div className="action">
-                            <Tooltip title="Edit">
-                                <IconButton>
-                                    <EditIcon />
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title="Done">
-                                <IconButton>
-                                    <DoneIcon />
-                                </IconButton>
-                            </Tooltip>
-                        </div>
-                    </Paper>
-                </Grid>
+                {renderReminder}
             </Grid>
         </div>
     )
 }
-export default ReminderList;
+
+function mapStateToProps(state) {
+    return {
+        reminders: state
+    }
+}
+
+export default connect(mapStateToProps, { deleteReminder })(ReminderList);

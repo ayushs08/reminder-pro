@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import Header from './components/header/Header'
@@ -21,28 +21,15 @@ const theme = createMuiTheme({
     }
 });
 
-class App extends Component {
-
-    state = {
-        reminderText: ''
-    }
-
-    handleTextChange = this.handleTextChange.bind(this)
-
-    handleTextChange(event) {
-        this.setState({[event.target.name]: event.target.value})
-    }
-
-    render() {
-        return (
-            <div className="App">
-                <MuiThemeProvider theme={theme}>
-                    <Header handleTextChange={this.handleTextChange} reminderText={this.state.reminderText}/>
-                    <ReminderList />
-                </MuiThemeProvider>
-            </div>
-        );
-    }
+const App = () => {
+    return (
+        <div className="App">
+            <MuiThemeProvider theme={theme}>
+                <Header />
+                <ReminderList />
+            </MuiThemeProvider>
+        </div>
+    )
 }
 
 export default App;

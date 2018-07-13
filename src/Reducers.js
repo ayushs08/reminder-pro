@@ -2,7 +2,7 @@ import { ADD_REMINDER } from './Constants'
 
 const reminder = (action) => {
     return {
-        text: action.text,
+        text: action.reminderText,
         id: Math.random()
     }
 }
