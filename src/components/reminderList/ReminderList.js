@@ -6,28 +6,35 @@ import IconButton from '@material-ui/core/IconButton';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
 import DoneIcon from '@material-ui/icons/Done';
 import EditIcon from '@material-ui/icons/Edit';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import './ReminderList.css'
 
 const ReminderList = () => {
     return (
         <div className="ReminderList">
-            <Grid container md={10} direction="row" justify="center" className="reminders"> 
+            <Grid container direction="row" justify="center" className="reminder-container"> 
                 <div className="clear-all">
-                <Button variant="fab" color="primary" aria-label="add" className="add-btn">
-                    <DoneAllIcon />
-                </Button>
+                <Tooltip title="Clear All">
+                    <Button variant="fab" color="primary" aria-label="add" className="add-btn">
+                        <DoneAllIcon />
+                    </Button>
+                </Tooltip>
                 </div>
                 <Grid item>
                     <Paper className="list-item">
                         <div className="the-remidner">Check</div>
                         <div className="action">
-                            <IconButton>
-                                <EditIcon />
-                            </IconButton>
-                            <IconButton>
-                                <DoneIcon />
-                            </IconButton>
+                            <Tooltip title="Edit">
+                                <IconButton>
+                                    <EditIcon />
+                                </IconButton>
+                            </Tooltip>
+                            <Tooltip title="Done">
+                                <IconButton>
+                                    <DoneIcon />
+                                </IconButton>
+                            </Tooltip>
                         </div>
                     </Paper>
                 </Grid>

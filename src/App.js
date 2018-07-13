@@ -24,20 +24,20 @@ const theme = createMuiTheme({
 class App extends Component {
 
     state = {
-        reminder: ''
+        reminderText: ''
     }
 
-    handleChange = this.handleChange.bind(this)
+    handleTextChange = this.handleTextChange.bind(this)
 
-    handleChange(reminder) {
-        this.setState({reminder})
+    handleTextChange(event) {
+        this.setState({[event.target.name]: event.target.value})
     }
 
     render() {
         return (
             <div className="App">
                 <MuiThemeProvider theme={theme}>
-                    <Header handleChange={this.handleChange}/>
+                    <Header handleTextChange={this.handleTextChange} reminderText={this.state.reminderText}/>
                     <ReminderList />
                 </MuiThemeProvider>
             </div>

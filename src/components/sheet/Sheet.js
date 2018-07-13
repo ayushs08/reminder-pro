@@ -4,27 +4,31 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import './Sheet.css'
 
-const ReminderForm = ({ handleChange }) => {
+const ReminderForm = ({ handleTextChange, reminderText }) => {
     return (
         <form>
             <TextField 
-                id="reminder"
+                name="reminderText"
                 label="I need to..."
+                value={reminderText}
                 fullWidth
                 margin="normal"
-                onChange={(event) => console.log()}
+                onChange={event => handleTextChange(event)}
             />
-            <Button variant="fab" color="secondary" aria-label="add" className="add-btn">
-                <AddIcon />
-            </Button>
+            <Tooltip title="Add reminder">
+                <Button variant="fab" color="secondary" aria-label="add" className="add-btn">
+                    <AddIcon />
+                </Button>
+            </Tooltip>
         </form>
     )
 }
 
-const Sheet = ({ handleChange }) => {
+const Sheet = ({ handleTextChange, reminderText }) => {
 
     return (
         <div className="Sheet">
@@ -32,7 +36,7 @@ const Sheet = ({ handleChange }) => {
                 <Grid item xs={10} md={6}>
                     <Paper className="paper">
                         <h1 className="sheet-title">Reminder Pro</h1>
-                        <ReminderForm handleChange={handleChange}/>
+                        <ReminderForm handleTextChange={handleTextChange} reminderText={reminderText}/>
                     </Paper>
                 </Grid>
             </Grid>
