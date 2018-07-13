@@ -10,17 +10,18 @@ import { addReminder } from '../../Actions'
 class ReminderForm extends Component {
     
     state = {
-        reminderText: ''
+        reminderText: '',
+        reminderDate: ''
     }
 
-    handleTextChange = this.handleTextChange.bind(this);
+    handleInputChange = this.handleInputChange.bind(this);
     handleNewReminder = this.handleNewReminder.bind(this);
 
     handleNewReminder() {
-        this.props.addReminder(this.state.reminderText)
+        this.props.addReminder(this.state.reminderText, this.state.reminderDate)
     }
 
-    handleTextChange(event) {
+    handleInputChange(event) {
         this.setState({[event.target.name]: event.target.value})
     }
 
@@ -29,12 +30,21 @@ class ReminderForm extends Component {
             <form>
                 <TextField 
                     name="reminderText"
-                    label="I need to..."
+                    label="Remind me to..."
                     value={this.state.reminderText}
-                    fullWidth
                     margin="normal"
-                    onChange={event => this.handleTextChange(event)}
-                    />
+                    fullWidth
+                    className="input-field"
+                    onChange={event => this.handleInputChange(event)}
+                />
+                <TextField
+                    name="reminderDate"
+                    label="Due Date"
+                    type="datetime-local"
+                    InputLabelProps = {{shrink: true}}
+                    className="input-field"
+                    onChange={event => this.handleInputChange(event)}
+                />
                 <Tooltip title="Add reminder">
                     <Button variant="fab" color="secondary" aria-label="add" className="add-btn" onClick={() => this.handleNewReminder()}>
                         <AddIcon />

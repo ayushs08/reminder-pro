@@ -8,21 +8,25 @@ import DoneIcon from '@material-ui/icons/Done';
 import EditIcon from '@material-ui/icons/Edit';
 import Tooltip from '@material-ui/core/Tooltip';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import { deleteReminder } from '../../Actions'
 import './ReminderList.css'
 
-const Reminder = ({ reminderText, handleDoneReminder, id }) => {
+const Reminder = ({ reminderText, reminderDate, handleDoneReminder, id }) => {
     return (
         <Grid item>
             <Paper className="list-item">
-                <div className="the-remidner">{reminderText}</div>
+                <div className="the-remidner">
+                    <div className="reminder-text">{reminderText}</div>
+                    <div className="reminder-date">{moment(new Date(reminderDate)).fromNow()}</div>
+                </div>
                 <div className="reminder-action">
-                    <Tooltip title="Edit">
+                    {/* <Tooltip title="Edit">
                         <IconButton>
                             <EditIcon />
                         </IconButton>
-                    </Tooltip>
+                    </Tooltip> */}
                     <Tooltip title="Done">
                         <IconButton >
                             <DoneIcon onClick={() => handleDoneReminder(id)}/>
@@ -40,7 +44,7 @@ const ReminderList = ({ reminders, ...props }) => {
         props.deleteReminder(id)
     }
 
-    const renderReminder = reminders.map( reminder => <Reminder reminderText={reminder.text} key={reminder.id} id={reminder.id} handleDoneReminder={handleDoneReminder}/> );
+    const renderReminder = reminders.map( reminder => <Reminder reminderText={reminder.text} reminderDate={reminder.dueDate} key={reminder.id} id={reminder.id} handleDoneReminder={handleDoneReminder}/> );
 
     return (
         <div className="ReminderList">

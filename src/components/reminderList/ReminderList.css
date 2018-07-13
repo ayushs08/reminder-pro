@@ -17,6 +17,12 @@
     display: flex;
     align-items: center;
 }
+.reminder-date {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: gray;
+}
 .reminder-action {
     margin-left: 2rem;
 }

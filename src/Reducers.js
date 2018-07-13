@@ -1,9 +1,10 @@
 import { ADD_REMINDER, DELETE_REMINDER } from './Constants'
 
-const reminder = (action) => {
+const reminder = ({ text, dueDate }) => {
     return {
-        text: action.text,
-        id: Math.random()
+        id: Math.random(),
+        text,
+        dueDate
     }
 }
 
