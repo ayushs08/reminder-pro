@@ -1,4 +1,4 @@
-import { ADD_REMINDER, DELETE_REMINDER } from './Constants'
+import { ADD_REMINDER, DELETE_REMINDER, CLEAR_ALL } from './Constants'
 
 export const addReminder = (text, dueDate) => {
     const action = {
@@ -16,5 +16,13 @@ export const deleteReminder = (id) => {
         id
     }
     console.log('action in deleteReminder', action);
+    return action;
+}
+
+export const clearAllReminders = () => {
+    const action = {
+        type: CLEAR_ALL
+    }
+    console.log('clearing')
     return action;
 }

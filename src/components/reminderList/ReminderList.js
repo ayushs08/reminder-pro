@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 import { deleteReminder } from '../../Actions'
+import { clearAllReminders } from '../../Actions'
 import './ReminderList.css'
 
 const Reminder = ({ reminderText, reminderDate, handleDoneReminder, id }) => {
@@ -52,7 +53,7 @@ const ReminderList = ({ reminders, ...props }) => {
                 <div className="clear-all">
                 <Tooltip title="Clear All">
                     <Button variant="fab" color="primary" aria-label="add" className="add-btn">
-                        <DoneAllIcon />
+                        <DoneAllIcon onClick={() => props.clearAllReminders()}/>
                     </Button>
                 </Tooltip>
                 </div>
@@ -66,4 +67,4 @@ function mapStateToProps(state) {
     return {reminders: state}
 }
 
-export default connect(mapStateToProps, { deleteReminder })(ReminderList);
+export default connect(mapStateToProps, { deleteReminder, clearAllReminders })(ReminderList);
