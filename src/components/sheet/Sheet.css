@@ -24,4 +24,10 @@
         left: 0;
         right: 0;
     }
+    .paper {
+        padding-bottom: 3rem;
+    }
+    .add-btn {
+        left: 50%;
+    }
 }
