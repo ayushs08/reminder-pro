@@ -19,3 +19,9 @@
     left: 100%;
     transform: translate(-50%, -50%);
 }
+@media (max-width: 768px) {
+    .sheet-title {
+        left: 0;
+        right: 0;
+    }
+}
