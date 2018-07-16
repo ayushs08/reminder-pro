@@ -1,0 +1,15 @@
+{
+  "short_name": "Reminder Pro",
+  "name": "Reminder Pro",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#e2fdfa",
+  "background_color": "#e2fdfa"
+}
