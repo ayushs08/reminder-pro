@@ -11,11 +11,27 @@ class ReminderForm extends Component {
     
     state = {
         reminderText: '',
-        reminderDate: ''
+        reminderDate: '',
+        textInvalid: null,
+        dateInvalid: null
     }
 
     handleInputChange = this.handleInputChange.bind(this);
     handleNewReminder = this.handleNewReminder.bind(this);
+    validateForm = this.validateForm.bind(this);
+
+    validateForm() {
+        if( this.state.reminderText.replace(/ /g, '') === '' ) {
+            this.setState({textInvalid: true})
+        } else {
+            this.setState({textInvalid: false}, () => { this.state.dateInvalid === false && this.handleNewReminder()})
+        }
+        if( this.state.reminderDate === '' ) {
+            this.setState({dateInvalid: true})
+        } else {
+            this.setState({dateInvalid: false})
+        }
+    }
 
     handleNewReminder() {
         this.props.addReminder(this.state.reminderText, this.state.reminderDate)
@@ -35,6 +51,7 @@ class ReminderForm extends Component {
                     margin="normal"
                     fullWidth
                     className="input-field"
+                    error={this.state.textInvalid}
                     onChange={event => this.handleInputChange(event)}
                 />
                 <TextField
@@ -43,10 +60,11 @@ class ReminderForm extends Component {
                     type="datetime-local"
                     InputLabelProps = {{shrink: true}}
                     className="input-field"
+                    error={this.state.dateInvalid}
                     onChange={event => this.handleInputChange(event)}
                 />
                 <Tooltip title="Add reminder">
-                    <Button variant="fab" color="secondary" aria-label="add" className="add-btn" onClick={() => this.handleNewReminder()}>
+                    <Button variant="fab" color="secondary" aria-label="add" className="add-btn" onClick={() => this.validateForm()}>
                         <AddIcon />
                     </Button>
                 </Tooltip>
