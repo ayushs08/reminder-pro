@@ -51,11 +51,11 @@ const ReminderList = ({ reminders, ...props }) => {
         <div className="ReminderList">
             <Grid container direction="row" justify="center" className="reminder-container"> 
                 <div className="clear-all">
-                <Tooltip title="Clear All">
+                { reminders.length > 0 && <Tooltip title="Clear All">
                     <Button variant="fab" color="primary" aria-label="add" className="add-btn">
                         <DoneAllIcon onClick={() => props.clearAllReminders()}/>
                     </Button>
-                </Tooltip>
+                </Tooltip>}
                 </div>
                 {renderReminder}
             </Grid>
