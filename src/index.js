@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
+import registerServiceWorker from './registerServiceWorker'
+import { requestNotificationPermission, displayNotification } from './pushNotifications'
 import reducer from './Reducers'
 import './index.css'
 import App from './App'
@@ -16,3 +17,5 @@ ReactDOM.render(
         <App />
     </Provider>, document.getElementById('root'))
 registerServiceWorker()
+requestNotificationPermission()
+displayNotification('Reminder', 'Time left')
