@@ -9,11 +9,11 @@ export function displayNotification(title, message) {
       navigator.serviceWorker.getRegistration().then(function(reg) {
         const options = {
             body: message,
-            icon: 'favicon.png',
+            icon: 'android-chrome-192x192.png',
             vibrate: [100, 50, 100],
             data: {
-              dateOfArrival: Date.now(),
-              primaryKey: 1
+                dateOfArrival: Date.now(),
+                primaryKey: 1
             }
           };
         reg.showNotification(title, options);
